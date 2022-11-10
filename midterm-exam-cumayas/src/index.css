@@ -13,7 +13,10 @@ html, body{
   background-color: white;
   border-radius: 5px;
   margin: 0cm;
-  padding: 0.7cm;
+  padding-top: 0.4cm;
+  padding-left: 0.7cm;
+  padding-right: 0.7cm;
+  padding-bottom: 0.7cm;
   margin-top: 2cm;
   width: 10cm;
   text-align: center;
@@ -81,14 +84,34 @@ html, body{
   background-color: rgb(181, 218, 253);
 }
 
-.error-message-container{
-  text-align: left;
-  padding-left: 0.2cm;
-  margin-bottom: 0.3cm;
+.message-container{
+  padding-left: 0.1cm;
+  margin-bottom: 0.2cm;
+  margin-top: 0cm;
+  height: 0.5cm;
 }
 
 #error-message{
+  height: 0cm;
   font-size: 11px;
-  color: rgb(211, 91, 91);
+  color: rgb(73, 73, 94);
+  background-color: rgb(255, 181, 181);
+  border-radius: 5px;
+  padding-left: 1cm;
+  padding-right: 1cm;
+  padding-top: 0.2cm;
+  padding-bottom: 0.2cm;
+}
+
+#success-message{
+  height: 0cm;
+  font-size: 11px;
+  color: rgb(73, 73, 94);
+  background-color: rgb(204, 253, 203);
+  border-radius: 5px;
+  padding-left: 1cm;
+  padding-right: 1cm;
+  padding-top: 0.2cm;
+  padding-bottom: 0.2cm;
 }
 
