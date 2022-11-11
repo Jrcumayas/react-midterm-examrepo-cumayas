@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+import {IoMdTrash} from 'react-icons/io'
+import {BiEdit} from 'react-icons/bi'
 
 const GroceryBud = () => {
     const[counter, setCounter] = useState(0);
@@ -9,6 +11,12 @@ const GroceryBud = () => {
     const[listItems, setListItems] = useState([]);
 
     useEffect(() => {
+        var storedItems = JSON.parse(localStorage.getItem('listItems'));
+        if(storedItems){
+            setListItems(storedItems);
+            setCounter(storedItems.length)
+        }
+
         const handleKeyDown = (e) => {
             console.log(e.key);
             if(e.key === "Enter"){
@@ -33,19 +41,35 @@ const GroceryBud = () => {
                 setErrorMessage(false);
             }, 3000)
         } else {
-            setErrorMessage(false);
             setSuccessMessage(true);
             setTimeout(() => {
                 setSuccessMessage(false);
             }, 3000)
             listItems.push({
-                id: counter,
                 item: product
             });
+            localStorage.setItem('listItems', JSON.stringify(listItems));
             setRecentlyAdded(product);
             setCounter(counter+1);
             setProduct('');
         }
+    }
+
+    const handleClearButton = () => {
+        localStorage.clear();
+        setListItems([]);
+        setCounter(0);
+        listItems.length = 0;
+    }
+
+    function handleRemoveButton(selected){
+        const newList = listItems.filter((item) => item.item !== selected);
+        setListItems(newList);
+        localStorage.setItem('listItems', JSON.stringify(newList));
+    }
+
+    function handleEditButton(selected){
+
     }
 
     return(
@@ -70,15 +94,24 @@ const GroceryBud = () => {
                         onClick = {handleButtonClick}
                     >Add to cart</button>
                 </div>
-                <div className="cart-containter">   
+                <div className="cart-container">   
                     <ul className="item-container">
                         {
                             listItems.map((items,index) => {
-                                return <li key = {index}>{items.item}</li>
+                                return (
+                                    <div className = "product">
+                                        <li key = {index} id = "product-item">{items.item}</li>
+                                        <div className = "item-buttons">
+                                            <button id = "edit-button" onClick = {()=>handleEditButton(items.item)}><BiEdit size={18}/></button>
+                                            <button id = "delete-button" onClick = {()=>handleRemoveButton(items.item)}><IoMdTrash size={18}/></button>
+                                        </div>
+                                    </div>
+                                )
                             })
                         }
                     </ul>
                 </div>
+                <button id="clear-all-items" onClick = {handleClearButton}>Clear All</button>
             </div>
         </div>
     );
