@@ -18,6 +18,7 @@ html, body{
   padding-right: 0.7cm;
   padding-bottom: 0.7cm;
   margin-top: 2cm;
+  margin-bottom: 2cm;
   width: 10cm;
   text-align: center;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -25,8 +26,9 @@ html, body{
 
 #header{
   margin:0cm;
-  margin-bottom: 0.3cm;
+  margin-bottom: 0.8cm;
   font-size: 25px;
+  letter-spacing: 3px;
 }
 
 .search-container{
@@ -79,7 +81,8 @@ html, body{
   border-style: none;
   background-color: rgb(137, 198, 255);
   transition: 0.3s;
-  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
 #enter-button:hover{
@@ -139,6 +142,17 @@ html, body{
   background-color: rgb(215, 223, 255);
 }
 
+.selected-product{
+  display: flex;
+  background-color: rgb(233, 238, 255);
+  margin-bottom: 0.2cm;
+  border-radius: 8px;
+  padding-right: 0.35cm;
+  transition: 0.3s;
+  border-style: solid;
+  border-width: 2px;
+}
+
 #product-item{
   text-align: left;
   list-style: none;
@@ -156,11 +170,19 @@ html, body{
 .item-buttons button{
   background-color: transparent;
   border-color: transparent;
+  border-radius: 50%;
   cursor: pointer;
+  padding-top: 1.5px;
+}
+
+.item-buttons button:hover{
+  background-color: rgb(233, 238, 255);
 }
 
 #clear-all-items{
-  background-color: #f79256;
+  background-color: transparent;
+  font-size: 14px;
+  letter-spacing: 1px;
   border-style: none;
   width: 4cm;
   border-radius: 20px;
@@ -169,8 +191,24 @@ html, body{
   transition: 0.3s;
 }
 
+#clear-all-items-cancel{
+  background-color: #ffc6a6;
+  border-style: none;
+  width: 4cm;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 0.3cm;
+  transition: 0.3s;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
 #clear-all-items:hover{
-  background-color: #ffae80;
+  background-color: #ffd9c3;
+}
+
+#clear-all-items-cancel:hover{
+  background-color: #ffd9c3;
 }
 
 
